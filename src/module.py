@@ -4,7 +4,6 @@ import tempfile
 import os
 import re
 import pdf_redactor
-import io
 
 def get_path(uploaded_file): 
     temp_dir = tempfile.mkdtemp()
