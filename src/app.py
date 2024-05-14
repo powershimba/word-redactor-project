@@ -1,7 +1,7 @@
 import streamlit as st
 import module
 
-# Layout
+# Layout 
 st.title('Redact words from PDF docs')
 col1, col2 = st.columns(2)
 

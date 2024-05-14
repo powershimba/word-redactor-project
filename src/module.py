@@ -1,8 +1,7 @@
 import streamlit as st
 import pypdfium2 as pdfium
 import tempfile
-import os
-import re
+import os, re
 import pdf_redactor
 
 def get_path(uploaded_file): 
