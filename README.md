@@ -31,18 +31,18 @@ Built by python and streamlit
 
 ## Discription
 
-#### User uses in 3 steps
+### User uses in 3 steps
 1. Upload PDF document 
 2. Enter the words to redact
 3. Review and Download redacted PDF
 
-#### Web app operates in 3 steps
-##### 1. Rendering
+### Web app operates in 3 steps
+#### 1. Rendering
 * It renders uploaded PDF iterating each page
 * Flie: `render.py`
 * Library: `pypdfium2`
     https://pypdfium2.readthedocs.io/en/stable/
-##### 2. Redacting
+#### 2. Redacting
 * Change `redacted_word` into `changed_word`
     * `redacted_word` : 
         It can be customized not only string but also patterns using regex
@@ -51,7 +51,7 @@ Built by python and streamlit
 * File: `redact.py`
 * library: `pdf_redactor`
     https://github.com/vitalbeats/pdf-redactor
-##### 3. Highlighting
+#### 3. Highlighting
 * Highlight the redacted words with black box.
     * It parses text in PDF and compare each text
     * Designates the position and fill the box in black color.
