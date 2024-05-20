@@ -34,7 +34,10 @@ with col1:
             f.write(uploaded_file.getvalue())
 
         # Render the uploaded file
+        st.write("#")  
         st.subheader("Original PDF")
+        st.write("#")  
+        st.write("")
         render_pdf(file_path_origin)        
 
 with col2:
