@@ -1,6 +1,5 @@
 
 <!-- PROJECT LOGO -->
-<br />
 <div align="center"
   <a href="https://github.com/powershimba/jigo_project_redact_words_from_pdf">
     <img src="/img/jigoai_logo.png" alt="Logo" height="80">
@@ -54,8 +53,8 @@ Built by python and streamlit
     https://github.com/vitalbeats/pdf-redactor
 ##### 3. Highlighting
 * Highlight the redacted words with black box.
-    * It parses text in PDF and compare each text with `changed_word`
-    * Designates the position(`rect`) of `changed_word` and fill the box in black color.
+    * It parses text in PDF and compare each text
+    * Designates the position and fill the box in black color.
 * File: `highlight.py`
 * Library: 
     - `pdfminer`
@@ -81,13 +80,6 @@ Built by python and streamlit
 ```
     streamlit run ./src/app.py
 ```
-
-
-<!-- LICENSE -->
-## License
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
 
 
 <!-- CONTACT -->
