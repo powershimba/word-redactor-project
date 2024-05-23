@@ -1,12 +1,16 @@
 # Extract Text Coordinates using pdfminer.six
 
+# 1. 대소문자 rR 바뀐거 모두 체크 (lower로 바꾼다음에 비교..!) 
+# 2. 특수기호 붙은거 
+
 from pdfminer.high_level import extract_pages
 from pdfminer.layout import LTTextContainer, LTTextLine, LTChar
 from PyPDF2.generic import DictionaryObject, NameObject, ArrayObject, FloatObject, TextStringObject
 import tempfile
 import os
+from module import *
 
-def text_coordinates(pdf_path, word):
+def text_coordinates(pdf_path, changed_word):
     text_coords = []
     for page_layout in extract_pages(pdf_path):
         for element in page_layout:
@@ -30,7 +34,7 @@ def text_coordinates(pdf_path, word):
 
     for char_info in text_coords:
         if char_info['text'].isspace():
-            if current_word == word:
+            if current_word == changed_word:
                 word_coords.append(current_coords)
             current_word = ''
             current_coords = []
@@ -39,7 +43,7 @@ def text_coordinates(pdf_path, word):
             current_coords.append(char_info)
 
     # Check the last word
-    if current_word == word:
+    if current_word == changed_word:
         word_coords.append(current_coords)
 
     return word_coords

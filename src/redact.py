@@ -1,6 +1,7 @@
 import tempfile
 import pdf_redactor
 import re, os
+from module import *
 
 from render import *
 
@@ -12,8 +13,8 @@ def redact(file_path, redacted_word, changed_word):
     
     options.content_filters = [
         (
-        re.compile(re.escape(redacted_word)),
-        lambda m: changed_word,
+        re.compile(re.escape(redacted_word), re.IGNORECASE),
+        lambda m: changed_word
         )
     ]
 

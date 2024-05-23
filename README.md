@@ -1,36 +1,8 @@
-
-<!-- PROJECT LOGO -->
-<div align="center"
-  <a href="https://github.com/powershimba/jigo_project_redact_words_from_pdf">
-    <img src="/img/jigoai_logo.png" alt="Logo" height="80">
-  </a>
-
 <!-- PROJECT TITLE-->
 <h3 align="center">Redact Words from PDF</h3>
-    <a href="https://github.com/github_username/repo_name">View Demo</a>
 </div>
 
 <!-- ABOUT THE PROJECT -->
-## About The Project
-
-<!-- DEMO VIDEO -->
-Web App to redact sensitive information in PDF.
-
-Simply upload document, 
-Select words to redact, 
-Download redacted version.
-
-Built by python and streamlit
-
-![Demo Screenshot](/img/demo1.png)
-![Demo Screenshot](/img/demo2.png)
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-## Discription
-
 ### User uses in 3 steps
 1. Upload PDF document 
 2. Enter the words to redact
@@ -43,18 +15,12 @@ Built by python and streamlit
 * Library: `pypdfium2`
     https://pypdfium2.readthedocs.io/en/stable/
 #### 2. Redacting
-* Change `redacted_word` into `changed_word`
-    * `redacted_word` : 
-        It can be customized not only string but also patterns using regex
-    * `changed_word`: 
-        It is created based on the number of upper and lower characters of `redacted_word` to customize the length of the word
+* Change `redacted_word` into `changed_word`. Redacted word can be specific words or phrase, and pattern(regex). Changed word is created using the function in `options.content_filters`
 * File: `redact.py`
 * library: `pdf_redactor`
     https://github.com/vitalbeats/pdf-redactor
 #### 3. Highlighting
-* Highlight the redacted words with black box.
-    * It parses text in PDF and compare each text
-    * Designates the position and fill the box in black color.
+* Highlight the `changed_word` with black box.
 * File: `highlight.py`
 * Library: 
     - `pdfminer`
@@ -64,7 +30,7 @@ Built by python and streamlit
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-## How to Run Locally
+### How to Run Locally
 
 1. Clone the repo
 ```
@@ -73,20 +39,10 @@ Built by python and streamlit
 
 2. Install dependencies
 ```
-    pip install -r requirements.txt
+    pip3 install -r requirements.txt
 ```
 
 3. Run streamlit
 ```
     streamlit run ./src/app.py
 ```
-
-
-<!-- CONTACT -->
-## Contact
-
-Jigoai Labs - https://jigo.ai/labs
-
-Project Link: [https://github.com/powershimba/repo_namejigo_project_redact_words_from_pdf](https://github.com/powershimba/jigo_project_redact_words_from_pdf)
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
