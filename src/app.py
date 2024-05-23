@@ -6,8 +6,7 @@ from highlight import *
 from module import *
 
 import tempfile
-import shutil
-import os, time
+import os
 
 st.title('Redact Words in PDF')
 st.markdown('''

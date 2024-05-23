@@ -1,8 +1,5 @@
 # Extract Text Coordinates using pdfminer.six
 
-# 1. 대소문자 rR 바뀐거 모두 체크 (lower로 바꾼다음에 비교..!) 
-# 2. 특수기호 붙은거 
-
 from pdfminer.high_level import extract_pages
 from pdfminer.layout import LTTextContainer, LTTextLine, LTChar
 from PyPDF2.generic import DictionaryObject, NameObject, ArrayObject, FloatObject, TextStringObject
