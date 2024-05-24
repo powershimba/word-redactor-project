@@ -32,10 +32,7 @@ with col1:
             f.write(uploaded_file.getvalue())
 
         # Render the uploaded file
-        st.write("#")  
         st.subheader("Original PDF")
-        st.write("#")  
-        st.write("")
         render_pdf(file_path_origin)        
 
 with col2:
@@ -46,33 +43,32 @@ with col2:
         submit_button = st.form_submit_button(label='Redact')
     st.text("Redact words: " + redact_words)
 
-    with st.spinner:
+    if submit_button:
+        # replace words to random words
 
-        if submit_button:
-            # replace words to random words
+        changed_word = generate_word(redact_words)
 
-            changed_word = generate_word(redact_words)
+        file_path_redacted = redact(file_path_origin, redact_words, changed_word)
 
-            file_path_redacted = redact(file_path_origin, redact_words, changed_word)
+        # Highlight the redacted word with black boxes
+        file_path_highlighted = highlight_words(file_path_redacted, changed_word)
 
-            # Highlight the redacted word with black boxes
-            file_path_highlighted = highlight_words(file_path_redacted, changed_word)
+        # Download redacted pdf fileW
+        st.subheader("Redacted PDF")
 
-            # Download redacted pdf fileW
-            st.subheader("Redacted PDF")
+        with open(file_path_highlighted, "rb") as f:
+            file_downloaded= f.read()
 
-            with open(file_path_highlighted, "rb") as f:
-                file_downloaded= f.read()
+        st.download_button(
+            label="Click here to download the redacted PDF", 
+            data = file_downloaded,
+            file_name="redacted.pdf",)
 
-            st.download_button(
-                label="Click here to download the redacted PDF", 
-                data = file_downloaded,
-                file_name="redacted.pdf",)
-            
+        with st.spinner("Rendering..."):
             render_pdf(file_path_highlighted)
 
-            # Clean up the temporary files
-            temp_files = [file_path_origin, file_path_redacted, file_path_highlighted]
-            for file in temp_files:
-                if file and os.path.exists(file):
-                    os.remove(file)    
+        # Clean up the temporary files
+        temp_files = [file_path_origin, file_path_redacted, file_path_highlighted]
+        for file in temp_files:
+            if file and os.path.exists(file):
+                os.remove(file)    
