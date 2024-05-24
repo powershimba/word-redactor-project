@@ -13,7 +13,7 @@ def redact(file_path, redacted_word, changed_word):
     
     options.content_filters = [
         (
-        re.compile(re.escape(redacted_word), re.IGNORECASE),
+        re.compile(r'\b' + re.escape(redacted_word) + r'\b', re.IGNORECASE),
         lambda m: changed_word
         )
     ]

@@ -1,10 +1,11 @@
 # Extract Text Coordinates using pdfminer.six
+import streamlit as st
 
 from pdfminer.high_level import extract_pages
 from pdfminer.layout import LTTextContainer, LTTextLine, LTChar
 from PyPDF2.generic import DictionaryObject, NameObject, ArrayObject, FloatObject, TextStringObject
 import tempfile
-import os
+import os, re
 from module import *
 
 def text_coordinates(pdf_path, changed_word):
@@ -30,14 +31,32 @@ def text_coordinates(pdf_path, changed_word):
     current_coords = []
 
     for char_info in text_coords:
+
+        # When the character is a space, check if the current word is the word to be changed 
         if char_info['text'].isspace():
+            pattern = r'[^a-zA-Z0-9]?' + re.escape(changed_word) + r'[^a-zA-Z0-9]?' 
+            # when the word is exactly the word to be changed
             if current_word == changed_word:
                 word_coords.append(current_coords)
+
+            # when the word includes the word to be changed
+            # but not the case when the word to be changed is a substring of the current word
+            # e.g., changed_word = 'apple' / current_word = 'pineapple' (X)
+            # e.g., changed_word = 'apple' / current_word = '/apple,' (O)
+
+            elif re.search(pattern, current_word):
+                for match in re.finditer(pattern, current_word):
+                    word_coords.append(current_coords[match.start():match.end()])
+            # Reset after adding the current word to the word_coords 
             current_word = ''
             current_coords = []
+        
+        # When the character is not a space, add the character to the current word
         else:
             current_word += char_info['text']
             current_coords.append(char_info)
+
+    
 
     # Check the last word
     if current_word == changed_word:
