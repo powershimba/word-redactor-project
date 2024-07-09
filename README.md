@@ -3,6 +3,9 @@
 </div>
 
 <!-- ABOUT THE PROJECT -->
+
+![image](https://github.com/powershimba/word-redactor-project/assets/99706343/bc9deba1-cb13-4527-bfae-bf4ed9e51149)
+
 ### User uses in 3 steps
 1. Upload PDF document 
 2. Enter the words to redact
